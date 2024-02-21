@@ -47,8 +47,14 @@
                                 <td><?php echo $data['NamaProduk']?></td>
                                 <td><?php echo $data['Harga']?></td>
                                 <td><?php echo $data['Stok']?></td>
-                                <td></td>
+                                <td><?php echo $data['Terjual']?></td>
+                                <?php
+                                    if($level == "admin") {
+                                 ?>
                                 <td align="center" width="12%"><a href="?page=edit-produk&ProdukID=<?= $data['ProdukID']; ?>" class="badge badge-primary p-2" title="Edit"><i class="">Edit</i></a> | <a href="?page=hapus-produk&ProdukID=<?= $data['ProdukID']; ?>" class="badge badge=danger p-2 delete-data" title='delete'><i class="">Delete</i></a><td>
+                                        <?php
+                                    }
+                                        ?>
                             </tr>
                             <?php } ?>
                         

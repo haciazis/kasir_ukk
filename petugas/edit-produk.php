@@ -29,7 +29,7 @@ while($user_data = mysqli_fetch_array($result1))
         <div class="col-md-12">
             <div class="card well">
                 <div class="card-header">
-                    <h3 class="">Tambah Produk</h3>
+                    <h3 class="">Edit Produk</h3>
                 </div>
                 <div class="card-body">
                     <form class="pt-3 mt-3" action="" method="post">

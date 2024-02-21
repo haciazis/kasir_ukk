@@ -32,7 +32,7 @@ while($user_data = mysqli_fetch_array($result1))
         <div class="col-md-4">
             <div class="card well">
                 <div class="card-header">
-                    <h3 class="">Update User</h3>
+                    <h3 class="">Edit User</h3>
                 </div>
                 <div class="card-body">
                     <form action="" method="POST">
