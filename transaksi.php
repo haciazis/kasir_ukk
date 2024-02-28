@@ -13,7 +13,7 @@ if (isset($_POST['tambah'])) {
     foreach ($menu_jumlah as $i => $item) {
         $parts = explode("|", $item);
         $produk_id = $parts[0];
-        $harga = $parts[1];
+        $harga = $parts[5];
         $jumlah = $jumlah_array[$i];
 
         $sql_stok = $con->query("SELECT Stok FROM produk WHERE ProdukID = '$produk_id'");
@@ -29,7 +29,7 @@ if (isset($_POST['tambah'])) {
         $sql = $con->query("INSERT INTO penjualan (TanggalPenjualan) VALUES ('$tanggal')");
         $id_transaksi_baru = mysqli_insert_id($con);
 
-        $sql = $con->query("INSERT INTO pelanggan (PelangganID, NamaPelanggan, NoMeja) VALUES ('$id_transaksi_baru', '$nama', '$nomeja')");
+        $sql = $con->query("INSERT INTO pelanggan (PelangganID, NamaPelanggan, Nomeja) VALUES ('$id_transaksi_baru', '$nama', '$nomeja')");
 
         foreach ($menu_jumlah as $i => $item) {
             $parts = explode("|", $item);
@@ -86,7 +86,7 @@ if (isset($_POST['tambah'])) {
             <div class="navbar-collapse">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="pilih-menu.php">Beranda</a>
+                        <a class="nav-link" href="index.php">Beranda</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="transaksi.php">Transaksi</a>
@@ -110,8 +110,8 @@ if (isset($_POST['tambah'])) {
                             <input type="text" class="form-control" id="nama" name="nama" required>
                         </div>
                         <div>
-                            <label for="nomeja" class="form-label">No Meja</label>
-                            <input type="number" min="1" class="form-control" id="nomeja" name="nomeja" required>
+                            <label for="Nomeja" class="form-label">No Meja</label>
+                            <input type="number" min="1" class="form-control" id="Nomeja" name="nomeja" required>
                         </div>
                         <div id="menuContainer">
                           <div>
@@ -145,3 +145,5 @@ if (isset($_POST['tambah'])) {
         </div>
       </body>
     </html>
+
+

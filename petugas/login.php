@@ -3,12 +3,15 @@ include "../koneksi/koneksi.php";
 
 error_reporting(0);
 session_start();
+if(isset($_SESSION['NamaUSer'])) {
+    echo "<script>alert('Maaf anda sudah login. silahkan logout terlebih dahulu'); window.location.replace('index.php')</script>";
+}
 
 if (isset($_POST['submit'])) {
-    $namauser = $_POST['NamaUser'];
+    $namauser = $_POST['NamaUSer'];
     $password = md5($_POST['Password']);
   
-    $sql = "SELECT * FROM user WHERE NamaUser='$namauser' AND Password='$password'";
+    $sql = "SELECT * FROM user WHERE NamaUSer='$namauser' AND Password='$password'";
     $result = mysqli_query($con, $sql);
 
     if ($result->num_rows > 0) {
@@ -17,7 +20,7 @@ if (isset($_POST['submit'])) {
         $level = $row['level'];
         $_SESSION['level'] = $level;
 
-        $_SESSION['NamaUser'] = $row['NamaUser'];
+        $_SESSION['NamaUSer'] = $row['NamaUSer'];
 
         header("Location: index.php");
         
@@ -39,11 +42,11 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
     <div class="kotak">
-        <h2>login user</h2>
+        <h2>login</h2>
         <form action="" method="post">
             <div class="form-input"> 
                 <label for="">Nama User</label>
-                <input class="input" type="text" name="NamaUser">
+                <input class="input" type="text" name="NamaUSer">
             </div>
             <div class="form-input">
                 <label for="">Password</label>
@@ -56,3 +59,4 @@ if (isset($_POST['submit'])) {
     </div>
 </body>
 </html>
+

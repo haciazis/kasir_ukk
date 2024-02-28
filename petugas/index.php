@@ -1,9 +1,10 @@
+
 <?php
 session_start();
 include "../koneksi/koneksi.php";
-$User= $_SESSION['NamaUser'];
+$User= $_SESSION['NamaUSer'];
 $level = $_SESSION['level'];
-if ($_SESSION['NamaUser']=="") {
+if ($_SESSION['NamaUSer']=="") {
     header("Location: login.php");
 }
 ?>
@@ -73,6 +74,10 @@ if ($_SESSION['NamaUser']=="") {
                   case 'tambah-barang';
                       include "tambah-barang.php";
                       break;
+
+                  case 'cari-menu';
+                      include "cari-menu.php";
+                      break;
                   
                   case 'hapus-user';
                       include "hapus-user.php";
@@ -102,3 +107,6 @@ if ($_SESSION['NamaUser']=="") {
 
 </body>
 </html>
+
+
+

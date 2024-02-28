@@ -26,13 +26,14 @@
         </form>
     </div>
     <?php 
-			include '../koneksi/koneksi.php';
-				if(isset($_POST['submit'])){
+            include '../koneksi/koneksi.php';
+                if(isset($_POST['submit'])){
 
-					$query=mysqli_query($con,"INSERT INTO user VALUES ('".$_POST['iduser']."','".$_POST['name']."','".md5($_POST['Password'])."', '".$_POST['level']."')");
-					if($query){
+                    $query=mysqli_query($con,"INSERT INTO user VALUES ('".$_POST['iduser']."','".$_POST['name']."','".md5($_POST['Password'])."', '".$_POST['level']."')");
+                    if($query){
                         echo "<script>alert('Berhasil menambah data')</script>";
-						header("location: index.php?page=user");
-					}
-				}
-			 ?>
+                        header("location: index.php?page=user");
+                    }
+                }
+             ?>
+

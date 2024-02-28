@@ -14,7 +14,7 @@ include("header.php");
             <div class="navbar-collapse">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="pilih-menu.php">Beranda</a>
+                        <a class="nav-link" href="index.php">Beranda</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="transaksi.php">Transaksi</a>
@@ -28,15 +28,16 @@ include("header.php");
           <div class="card mt-5">
             <div class="card-body">
             <table class="table table-bordered">
-		<thead>
-			<tr>
-				<th>No</th>
-				<th>Tanggal Transaksi</th>
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Tanggal Transaksi</th>
         <th>Nama Pemesan</th>
-				<th>Menu</th>	
-			</tr>
-		</thead>
-		<tbody>
+        <th>No Meja</th>
+        <th>Menu</th> 
+      </tr>
+    </thead>
+    <tbody>
         <?php
             include("koneksi/koneksi.php");
 
@@ -46,14 +47,13 @@ include("header.php");
               <tr>
                 <td><?php echo $data['PenjualanID']?></td>
                 <td><?php echo $data['TanggalPenjualan']?></td>
-                <td>
                   <?php
                     $sql2 = $con->query("SELECT * FROM pelanggan WHERE PelangganID = '".$data['PenjualanID']."'");
                     while ($data2= $sql2->fetch_assoc()) {
-                      echo $data2['NamaPelanggan'];
-                    }
-                  ?>
-                </td>
+                ?>
+                <td><?php echo $data2['NamaPelanggan'] ?></td>
+
+                <td><?php echo $data2['Nomeja']; } ?></td>
                 <td>
                     <table class="table table-bordered">
                         <thead>
@@ -107,10 +107,11 @@ include("header.php");
             }
               
         ?>
-		</tbody>
-	</table>
-  <a href="cetaktransaksi.php" target="_blank" class="btn btn-md btn-success float-end">Cetak Transaksi</a>
+    </tbody>
+  </table>
+  <a href="cetak-transaksi.php" target="_blank" class="btn btn-md btn-success float-end">Cetak Transaksi</a>
             </div>
           </div>
         </div>
 </body>
+

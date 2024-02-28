@@ -1,60 +1,61 @@
+<?php
+if(isset($_POST['search'])){
+    $search = $_POST ['search'];
+    $sql = $con->query("SELECT * FROM produk WHERE NamaProduk LIKE '%$search%'");
+} else {
+    $sql = $con->query("SELECT * FROM produk");
+}
+?>
 <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Daftar Barang</h4>
                     <p class="card-description">
-                    <!-- Add class <code>.table</code> -->
-                    <?php
-                        if($level == "admin") {
-                    ?>
-                        <a href="?page=tambah-barang" title="Tambah Produk" 
-                            class="btn btn-primary btn-icon-split btn-sm">
-                                <span class="icon text-white-50"><i class="fas fa-plus"></i></span>
-                                <span class="text">Tambah Produk</span>
+                  
+                 <a href="?page=tambah-barang" title="Tambah Produk" 
+                  class="btn btn-primary btn-icon-split btn-sm">
+ <span class="icon text-white-50"><i class="fas fa-plus"></i></span>
+                           <span class="text">Tambah Produk</span>
+                           
                         </a>
-                        <?php } ?>
                     </p>
+                    <form class="d-flex" action="?page=cari-menu" method="post">
+            <input class="form-control me-2" type="search" placeholder="cari menu..." aria-label="Search" name="search">
+            <button class="btn btn-outline-light" type="submit">Cari</button>
+        </form>
 
                     <div class="table-responsive">
                         <table class="table" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>foto</th>
+                                    <th>Foto</th>
                                     <th>Nama Produk</th>
                                     <th>Harga</th>
                                     <th>Stok</th>
                                     <th>Terjual</th>
-                                    <?php
-                                    if($level == "admin") {
-                                 ?>
                                     <th>Pilihan</th>
-                                    <?php } ?>
-                                    </p>
                                 </tr>
                             </thead>
                             <tbody>
                             <?php 
-                                $no = 1;
-                                $sql = $con->query("SELECT * FROM produk");
+                     $no = 1;
+                     $sql = $con->query("SELECT * FROM produk");
                                 while ($data= $sql->fetch_assoc()) {
                                     
                             ?>
                             <tr>
                                 <td><?php echo $no++ ?></td>
-                                <td><?php echo "<img src='../foto/".$data['foto']."' width='70' height='70'>"; ?></td>
+                                <td><?php echo "<img src='../Foto/".$data['Foto']."'widht='70' height='70'>";?></td>
                                 <td><?php echo $data['NamaProduk']?></td>
-                                <td><?php echo $data['Harga']?></td>
+                                <td>Rp.<?php echo number_format ($data['Harga'])?></td>
                                 <td><?php echo $data['Stok']?></td>
                                 <td><?php echo $data['Terjual']?></td>
-                                <?php
-                                    if($level == "admin") {
-                                 ?>
-                                <td align="center" width="12%"><a href="?page=edit-produk&ProdukID=<?= $data['ProdukID']; ?>" class="badge badge-primary p-2" title="Edit"><i class="">Edit</i></a> | <a href="?page=hapus-produk&ProdukID=<?= $data['ProdukID']; ?>" class="badge badge=danger p-2 delete-data" title='delete'><i class="">Delete</i></a><td>
-                                        <?php
-                                    }
-                                        ?>
+                                <td><a type='button' href='?page=edit-produk&ProdukID=<?= $data['ProdukID']; ?>' class='btn btn-sm btn-warning'>Edit</a>/<a type='button' href='?page=hapus-produk&ProdukID=<?= $data['ProdukID']; ?>' class='btn btn-sm btn-danger'>Delete</a></td>
+                                <td>
+                                    
+                                </td>
                             </tr>
                             <?php } ?>
                         
@@ -66,3 +67,4 @@
             </div>
         </div>
     </div>
+

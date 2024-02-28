@@ -1,8 +1,43 @@
-<?php
+<div class="row well">
+        <div class="col-md-4">
+            <div class="card well">
+                <div class="card-header">
+                    
+              <form action="" class="form-signin" method="post" enctype="multipart/form-data"> 
+              <h3 class="">Tambah Barang</h3>
+                <div class="card-body">
+                  <form action="" method="post">
+                    <div class="mb-3 mt-3">
+                    <table for="" class="form-label">id</table>
+                      <input type="number" name="ProdukID" class="form-control" require autofocus>
+                    </div>
+                    <div class="mb-3 mt-3">
+                      <table for="" class="form-label">Nama</table>
+                      <input type="text" name="NamaProduk" class="form-control" require autofocus>
+                    </div>
+                    <div class="mb-3 mt-3">
+                      <table for="" class="form-label">harga</table>
+                      <input type="number" name="Harga" class="form-control" require autofocus >
+                    </div>
+                    <div class="mb-3 mt-3">
+                    <table for="" class="form-label">stok</table>
+                      <input type="number" name="Stok" class="form-control" require autofocus>
+                    </div>
+                    <div class="mb-3">
+                            <label for="foto" class="form-label">Foto<span style="color: red;"> *</span></label>
+                            <input type="file" class="form-control" id="foto" name="foto" required>
+                            <p style="color: red;">Hanya bisa menginput foto dengan ekstensi PNG, JPG, JPEG, SVG</p>
+                     </div>
+                    
+                      <button name="tambah" class="btn btn-primary">Tambah Data</button>
+                      
+                    </div> 
+                  </form>
+                  <?php
 
 if (isset($_POST['tambah'])) {
-  $id = $_POST['ProdukID'];
-  $nama = $_POST['NamaProduk'];
+  $produkid = $_POST['ProdukID'];
+  $namaproduk = $_POST['NamaProduk'];
   $harga = $_POST['Harga'];
   $stok = $_POST['Stok'];
 
@@ -14,11 +49,10 @@ if (isset($_POST['tambah'])) {
   
   $uploadOk = 1;
 
-  // File upload handling
   if (move_uploaded_file($_FILES["foto"]["tmp_name"], $targetfile)) {
-      $sql = "INSERT INTO produk (ProdukID, NamaProduk, Harga, Stok, foto) VALUES ('$id','$nama', '$harga', $stok, '$filename')";
+      $sql = "INSERT INTO produk (ProdukID, NamaProduk, Harga, Stok, foto) VALUES ('$produkid','$namaproduk', '$harga', $stok, '$filename')";
       if ($con->query($sql) === TRUE) {
-          echo "<script>alert('Berhasil menambahkan produk');window.location.href='?page=stok';</script>";
+          echo "<script>alert('Berhasil menambahkan produk');window.location.href='?page=stok-brg';</script>";
           exit();
       } else {
           echo "Error: " . $sql . "<br>" . $con->error;
@@ -29,44 +63,4 @@ if (isset($_POST['tambah'])) {
 
   $con->close();
 }
-
 ?>
-      <body>
-
-        <div class="p-4" id="main-content">
-          <div class="card well">
-            <div class="card-body">
-                <div class="container mt-5">
-                    <h2>Tambah Produk Baru</h2>
-                    <form action="" method="POST" class="col-md-10" enctype="multipart/form-data">
-                        <div class="mb-3">
-                            <label for="id" class="form-label">ID Produk<span style="color: red;"> *</span></label>
-                            <input type="text" class="form-control" id="id" name="ProdukID" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="nama" class="form-label">Nama Produk<span style="color: red;"> *</span></label>
-                            <input type="text" class="form-control" id="nama" name="NamaProduk" required>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-sm-6">
-                                <label for="harga" class="form-label">Harga<span style="color: red;"> *</span></label>
-                                <input type="number" class="form-control" id="harga" name="Harga" required>
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <label for="stok" class="form-label">Stok<span style="color: red;"> *</span></label>
-                                <input type="number" class="form-control" id="stok" name="Stok" required>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="foto" class="form-label">Foto<span style="color: red;"> *</span></label>
-                            <input type="file" class="form-control" id="foto" name="foto" required>
-                            <p style="color: red;">Hanya bisa menginput foto dengan ekstensi PNG, JPG, JPEG, SVG</p>
-                        </div>
-                            <button type="submit" name="tambah" class="btn btn-primary">Tambah Produk</button>
-                        
-                    </form>
-                </div>            
-            </div>
-          </div>
-        </div>
-    </body>

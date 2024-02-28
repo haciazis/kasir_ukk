@@ -42,7 +42,7 @@
                             ?>
                             <tr>
                                 <td><?php echo $no++ ?></td>
-                                <td><?php echo $data['NamaUser']?></td>
+                                <td><?php echo $data['NamaUSer']?></td>
                                 <td><?php echo $data['Password']?></td>
                                 <td><?php echo $data['level']?></td>
                                 <?php
@@ -63,3 +63,6 @@
             </div>
         </div>
     </div>
+
+
+

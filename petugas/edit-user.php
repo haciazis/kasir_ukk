@@ -2,19 +2,18 @@
 include_once("../koneksi/koneksi.php");
  
 if(isset($_POST['update']))
-{	
-	$id = $_GET['UserID'];
-	
-	$name=$_POST['name'];
-	$password= md5($_POST['password']);
+{   
+    $id = $_GET['UserID'];
+    
+    $name=$_POST['name'];
+    $password= md5($_POST['password']);
     $level = $_POST['level'];
-	// update user data
-	$result = mysqli_query($con, "UPDATE user SET NamaUser='$name', Password='$password', level='$level' WHERE UserID=$id");
-	
-	header("Location: index.php?page=user");
+    // update user data
+    $result = mysqli_query($con, "UPDATE user SET NamaUSer='$name', Password='$password', level='$level' WHERE UserID=$id");
+    
+    header("Location: index.php?page=user");
     echo "<script>alert('berhasil');.windows.</script>";
 }
-
 
 $id = $_GET['UserID'];
 
@@ -22,9 +21,9 @@ $result1 = mysqli_query($con, "SELECT * FROM user WHERE UserID=$id");
  
 while($user_data = mysqli_fetch_array($result1))
 {
-	$name = $user_data['NamaUser'];
-	$password = $user_data['Password'];
-	$level = $user_data['level'];
+    $name = $user_data['NamaUSer'];
+    $password = $user_data['Password'];
+    $level = $user_data['level'];
 }
 ?>
 

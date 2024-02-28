@@ -11,3 +11,4 @@ $result = mysqli_query($con, "DELETE FROM produk WHERE ProdukID=$id");
 // After delete redirect to Home, so that latest user list will be displayed.
 header("Location:index.php?page=stok");
 ?>
+

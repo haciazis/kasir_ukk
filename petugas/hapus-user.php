@@ -11,3 +11,5 @@ $result = mysqli_query($con, "DELETE FROM user WHERE UserID=$id");
 // After delete redirect to Home, so that latest user list will be displayed.
 header("Location:index.php?page=user");
 ?>
+
+
